@@ -58,3 +58,14 @@ Deleting a file:
 ```
 curl --user username:password -X "DELETE" http://127.0.0.1:8080/api/file/myfolder/my.file
 ```
+
+## Code layout
+Quick code layout explanation:
+* api -> Everything in this folder relates to the URL address. For example, api/file/get refers to a HTTP GET request to http(s)://{host}/api/file*
+* cli -> Command-line interface where folder layout relates to command ordering. For example, cli/config/user.go refers to a CLI call of: 'sample config user ...'
+* common/db -> Interface for database access.
+* common/web -> Interface for reading from and replying to clients.
+* model -> Simplified calls permitting reusable data manipulations.
+* router -> Handles authenticated wrapping and routing of API calls.
+* sql -> SQL string constants.
+* sample.go -> Entry point for the service.
