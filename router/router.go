@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/halverneus/sample/api/file"
+	"github.com/halverneus/sample/common/log"
 	"github.com/halverneus/sample/common/web"
 	"github.com/halverneus/sample/model/user"
 )
@@ -28,6 +29,10 @@ func auth(
 		// Retrieve username and password from headers.
 		username, password, ok := r.BasicAuth()
 		if !ok {
+			if 0 == len(username) {
+				username = "UNKNOWN"
+			}
+			log.For("/ROUTER(AUTH)", username).Warning().Print("Unknown user and/or password")
 			ctx.Reply().Status(http.StatusUnauthorized).Do()
 			return
 		}
@@ -35,6 +40,7 @@ func auth(
 		// Perform authorization check.
 		if id, err := user.Authorize(username, password); nil != err {
 			// FAILED
+			log.For("/ROUTER(AUTH)", username).Warning().Print("Authentication failed")
 			ctx.Reply().Status(http.StatusUnauthorized).With(err.Error()).Do()
 		} else {
 			// SUCCESS
