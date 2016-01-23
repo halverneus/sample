@@ -59,7 +59,7 @@ func testPut(t *testing.T) {
 		ctx.User = "UnitTest"
 		ctx.UserID = "01010101010101010101010101010101"
 
-		put(ctx)
+		Route(ctx)
 	}))
 	defer srv.Close()
 
@@ -134,7 +134,7 @@ func testGet(t *testing.T) {
 		ctx.User = "UnitTest"
 		ctx.UserID = "01010101010101010101010101010101"
 
-		get(ctx)
+		Route(ctx)
 	}))
 	defer srv.Close()
 
@@ -215,7 +215,7 @@ func testDelete(t *testing.T) {
 		ctx.User = "UnitTest"
 		ctx.UserID = "01010101010101010101010101010101"
 
-		del(ctx)
+		Route(ctx)
 	}))
 	defer srv.Close()
 

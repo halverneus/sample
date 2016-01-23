@@ -3,6 +3,7 @@ package file
 import (
 	"net/http"
 
+	"github.com/halverneus/sample/common/log"
 	"github.com/halverneus/sample/common/web"
 )
 
@@ -19,6 +20,7 @@ func Route(ctx *web.Context) {
 		del(ctx)
 
 	default:
+		log.For("/API/FILE(ROUTE)", ctx.User).Warning().Printf("Unimplemented method: %s", ctx.R.Method)
 		ctx.Reply().Status(http.StatusNotImplemented).Do()
 	}
 }
