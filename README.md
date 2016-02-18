@@ -1,3 +1,5 @@
+[![Go Report Card](https://goreportcard.com/badge/github.com/halverneus/sample)](https://goreportcard.com/report/github.com/halverneus/sample)
+
 # Sample
 A simplified Object Storage sample service written in Go.
 
